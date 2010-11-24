@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>de.cosmocode</groupId>
+        <artifactId>cosmocode-parent</artifactId>
+        <version>2.4.0</version>
+    </parent>
+
+    <name>CosmoCode Selenium</name>
+
+    <groupId>de.cosmocode</groupId>
+    <artifactId>cosmocode-selenium</artifactId>
+    <version>0.1-SNAPSHOT</version>
+
+    <scm>
+        <developerConnection>scm:svn:https://commons.svn.cosmocode.de/cosmocode-selenium/trunk</developerConnection>
+    </scm>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium.client-drivers</groupId>
+            <artifactId>selenium-java-client-driver</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.4</version>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>cosmocode-public</id>
+            <name>CosmoCode Public Maven Repository</name>
+            <url>http://mvn.cosmocode.de/</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>cosmocode-public</id>
+            <name>CosmoCode Public Maven Repository</name>
+            <url>http://mvn.cosmocode.de/</url>
+        </pluginRepository>
+    </pluginRepositories>
+</project>
