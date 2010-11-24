@@ -12,10 +12,10 @@
 
     <groupId>de.cosmocode</groupId>
     <artifactId>cosmocode-selenium</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.1.0</version>
 
     <scm>
-        <developerConnection>scm:svn:https://commons.svn.cosmocode.de/cosmocode-selenium/trunk</developerConnection>
+        <developerConnection>scm:svn:https://commons.svn.cosmocode.de/cosmocode-selenium/tags/0.1.0</developerConnection>
     </scm>
 
     <dependencies>
