@@ -23,10 +23,12 @@ import org.junit.After;
 import org.junit.Before;
 
 /**
+ * Abstract base class for selenium testcases.
+ * 
  * @author Tobias Sarnowski
- *
  */
 public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
+
     public static final String CONFIG_SELENIUM_HOST = "selenium.host";
     public static final String CONFIG_SELENIUM_HOST_DEFAULT = "selenium.cosmo";
 
@@ -78,7 +80,8 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
      * @return how long to wait for new pages
      */
     public int getTimeoutInMs() {
-        return 30000;  // selenium default
+        // selenium default
+        return 30000;
     }
 
     /**
@@ -89,97 +92,80 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     public abstract String getTestServerUrl();
 
     /**
-     * Override to configure basic authentication
-     *
-     * @return credentials
-     */
-    public SeleniumBasicAuth getBasicAuthentication() {
-        // null means no authentication
-        return null;
-    }
-
-    /**
      * Don't forget to call super() when overriding this method.
-     *
-     * @throws Exception
      */
-	@Before
+    @Before
     @Override
-	public void setUp() throws Exception {
+    public void setUp() {
         // lifecycle
         setUpTestServer();
 
         // start session with remote server
-        SeleniumServer seleniumServer = getSeleniumServer();
-		selenium = new DefaultSelenium(
+        final SeleniumServer seleniumServer = getSeleniumServer();
+        selenium = new DefaultSelenium(
                 seleniumServer.getHost(),
                 seleniumServer.getPort(),
                 getSeleniumBrowser(),
                 getTestServerUrl()
         );
-		selenium.start();
+        selenium.start();
 
         // configure our own default timeout
-        selenium.setTimeout("" + getTimeoutInMs());
-
-        // do basic auth if nessecary
-        final SeleniumBasicAuth basicAuth = getBasicAuthentication();
-        if (basicAuth != null) {
-            final String encoded = Base64.encodeBase64String(
-                    (basicAuth.getUsername() + ":" + basicAuth.getPassword()).getBytes()
-            );
-            //selenium.addCustomRequestHeader("Authorization", "Basic " + encoded);
-        }
+        selenium.setTimeout(Integer.toString(getTimeoutInMs()));
 
         // lifecycle
         setUpWebsite();
-	}
+    }
 
     /**
      * Don't forget to call super() when overriding this method.
-     *
-     * @throws Exception
      */
-	@After
+    @After
     @Override
-	public void tearDown() throws Exception {
+    public void tearDown() {
         // lifecycle
         tearDownWebsite();
 
         // end the session
-		selenium.stop();
+        selenium.stop();
 
         // lifecycle
         tearDownTestServer();
-	}
-
-
-    /**
-     * Lifecycle: before selenium is set up
-     */
-    public void setUpTestServer() { /* dummy */ }
+    }
 
     /**
-     * Lifecycle: after selenium is set up
+     * Lifecycle: before selenium is set up.
      */
-    public void setUpWebsite() { /* dummy */ }
+    public void setUpTestServer() {
+
+    }
 
     /**
-     * Lifecycle: before selenium is teared down
+     * Lifecycle: after selenium is set up.
      */
-    public void tearDownWebsite() { /* dummy */ }
+    public void setUpWebsite() {
+
+    }
 
     /**
-     * Lifecycle: after selenium is teared down
+     * Lifecycle: before selenium is teared down.
      */
-    public void tearDownTestServer() { /* dummy */ }
+    public void tearDownWebsite() {
 
+    }
+
+    /**
+     * Lifecycle: after selenium is teared down.
+     */
+    public void tearDownTestServer() {
+
+    }
 
     /**
      * Shortcut for selenium.waitForPageToLoad(String) with default timeout.
      */
     public void waitForPageToLoad() {
-        selenium.waitForPageToLoad("" + getTimeoutInMs());
+        selenium.waitForPageToLoad(Integer.toString(getTimeoutInMs()));
     }
 
     /**
@@ -188,6 +174,8 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
      * @param timeoutInMs timeout for waiting
      */
     public void waitForPageToLoad(int timeoutInMs) {
-        selenium.waitForPageToLoad("" + timeoutInMs);
+        selenium.waitForPageToLoad(Integer.toString(timeoutInMs));
     }
+
 }
+

@@ -17,20 +17,25 @@
 package de.cosmocode.selenium;
 
 /**
+ * Value object for selenium host and port.
+ * 
  * @author Tobias Sarnowski
  */
 public interface SeleniumServer {
 
     /**
+     * Retrieves this server's host.
      *
      * @return the server's hostname
      */
     String getHost();
 
     /**
+     * Retrieves this server's port.
      *
      * @return the server's port
      */
     int getPort();
 
 }
+
