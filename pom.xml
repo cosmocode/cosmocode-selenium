@@ -15,7 +15,7 @@
     <version>0.2-SNAPSHOT</version>
 
     <scm>
-        <developerConnection>scm:svn:https://commons.svn.cosmocode.de/cosmocode-selenium/trunk</developerConnection>
+        <developerConnection>scm:git:git@github.com:cosmocode/cosmocode-selenium.git</developerConnection>
     </scm>
 
     <dependencies>
