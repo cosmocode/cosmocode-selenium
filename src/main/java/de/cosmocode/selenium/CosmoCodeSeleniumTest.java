@@ -16,11 +16,11 @@
 
 package de.cosmocode.selenium;
 
-import com.thoughtworks.selenium.DefaultSelenium;
-import com.thoughtworks.selenium.SeleneseTestCase;
-import org.apache.commons.codec.binary.Base64;
 import org.junit.After;
 import org.junit.Before;
+
+import com.thoughtworks.selenium.DefaultSelenium;
+import com.thoughtworks.selenium.SeleneseTestCase;
 
 /**
  * Abstract base class for selenium testcases.
