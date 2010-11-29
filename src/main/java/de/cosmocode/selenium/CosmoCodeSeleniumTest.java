@@ -191,6 +191,16 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     }
 
     /**
+     * Simulates the ENTER key pressed and waits for page to load.
+     *
+     * @param locator where to tigger the event
+     */
+    public void pressEnterAndWait(String locator) {
+        pressEnter(locator);
+        waitForPageToLoad();
+    }
+
+    /**
      * Opens another page and waits for it to load.
      *
      * @param url the URL to open
