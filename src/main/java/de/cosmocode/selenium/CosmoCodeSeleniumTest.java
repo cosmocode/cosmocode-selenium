@@ -191,21 +191,21 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     }
 
     /**
-     * Opens another page and waits for it.
+     * Opens another page and waits for it to load.
      *
      * @param url the URL to open
      */
-    public void openAndWaitForPageToLoad(String url) {
+    public void openAndWait(String url) {
         selenium.open(url);
         waitForPageToLoad();
     }
 
     /**
-     * Submits the given formular and waits for it.
+     * Submits the given formular and waits for it to load.
      *
      * @param locator form identifier
      */
-    public void submitAndWaitForPageToLoad(String locator) {
+    public void submitAndWait(String locator) {
         selenium.submit(locator);
         waitForPageToLoad();
     }
