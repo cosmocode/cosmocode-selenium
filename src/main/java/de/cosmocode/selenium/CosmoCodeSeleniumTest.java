@@ -194,6 +194,7 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
      * Simulates the ENTER key pressed and waits for page to load.
      *
      * @param locator where to tigger the event
+     * @since 1.2
      */
     public void pressEnterAndWait(String locator) {
         pressEnter(locator);
@@ -214,6 +215,7 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
      * Submits the given formular and waits for it to load.
      *
      * @param locator form identifier
+     * @since 1.2
      */
     public void submitAndWait(String locator) {
         selenium.submit(locator);
@@ -224,6 +226,7 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
      * Checks if the given pattern is present in the current browser window.
      *
      * @param pattern search text
+     * @since 1.2
      */
     public void verifyTextPresent(String pattern) {
         verifyTrue(selenium.isTextPresent(pattern));
@@ -233,6 +236,7 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
      * Checks if the given pattern is not present in the current browser window.
      *
      * @param pattern search text
+     * @since 1.2
      */
     public void verifyTextNotPresent(String pattern) {
         verifyFalse(selenium.isTextPresent(pattern));
