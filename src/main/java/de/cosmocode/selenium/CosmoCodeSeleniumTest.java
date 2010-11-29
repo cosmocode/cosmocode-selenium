@@ -38,6 +38,10 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     public static final String CONFIG_SELENIUM_BROWSER = "selenium.browser";
     public static final String CONFIG_SELENIUM_BROWSER_DEFAULT = "*chrome";
 
+    // in general helful constants
+    public static final String ENTER = "\\13";
+
+
     /**
      * Overwrite this to change the default selenium remote control server.
      *
@@ -177,5 +181,33 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
         selenium.waitForPageToLoad(Integer.toString(timeoutInMs));
     }
 
-}
+    /**
+     * Simulates the ENTER key pressed.
+     *
+     * @param locator where to trigger the event
+     */
+    public void pressEnter(String locator) {
+        selenium.keyPress(locator, ENTER);
+    }
 
+    /**
+     * Opens another page and waits for it.
+     *
+     * @param url the URL to open
+     */
+    public void openAndWaitForPageToLoad(String url) {
+        selenium.open(url);
+        waitForPageToLoad();
+    }
+
+    /**
+     * Submits the given formular and waits for it.
+     *
+     * @param locator form identifier
+     */
+    public void submitAndWaitForPageToLoad(String locator) {
+        selenium.submit(locator);
+        waitForPageToLoad();
+    }
+
+}
