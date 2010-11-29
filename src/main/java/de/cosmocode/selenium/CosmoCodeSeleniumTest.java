@@ -229,6 +229,15 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
         verifyTrue(selenium.isTextPresent(pattern));
     }
 
+    /**
+     * Checks if the given pattern is not present in the current browser window.
+     *
+     * @param pattern search text
+     */
+    public void verifyTextNotPresent(String pattern) {
+        verifyFalse(selenium.isTextPresent(pattern));
+    }
+
 
     /* DELEGATION */
     /* CHECKSTYLE:OFF */
