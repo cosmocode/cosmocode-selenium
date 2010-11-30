@@ -226,6 +226,7 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
      * Asserts that an alert with the given message is present.
      *
      * @param message message
+     * @since 1.4
      */
     public void assertAlert(String message) {
         assertEquals(message, selenium.getAlert());
@@ -236,6 +237,7 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
      *
      * @param message message
      * @param failMessage message
+     * @since 1.4
      */
     public void assertAlert(String message, String failMessage) {
         assertEquals(failMessage, message, selenium.getAlert());
