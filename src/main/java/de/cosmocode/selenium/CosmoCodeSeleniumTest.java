@@ -166,6 +166,19 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     }
 
     /**
+     * Assets that to values are not equal
+     *
+     * @param failMessage message
+     * @param obj1 object
+     * @param obj2 object
+     */
+    public static void assertNotEquals(String failMessage, Object obj1, Object obj2) {
+        if (obj1.equals(obj2)) {
+            fail(failMessage);
+        }
+    }
+
+    /**
      * Shortcut for selenium.waitForPageToLoad(String) with default timeout.
      */
     public void waitForPageToLoad() {
@@ -220,6 +233,52 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     public void submitAndWait(String locator) {
         selenium.submit(locator);
         waitForPageToLoad();
+    }
+
+    /**
+     * Assert that the value of an element is equal to the given.
+     *
+     * @param locator element location
+     * @param value expected value
+     * @since 1.5
+     */
+    public void assertValue(String locator, String value) {
+        assertEquals(selenium.getValue(locator), value);
+    }
+
+    /**
+     * Assert that the value of an element is equal to the given.
+     *
+     * @param locator element location
+     * @param value expected value
+     * @param failMessage message
+     * @since 1.5
+     */
+    public void assertValue(String locator, String value, String failMessage) {
+        assertEquals(failMessage, selenium.getValue(locator), value);
+    }
+
+    /**
+     * Assert that the value of an element is not equal to the given.
+     *
+     * @param locator element location
+     * @param value expected value
+     * @since 1.5
+     */
+    public void assertNotValue(String locator, String value) {
+        assertNotEquals(selenium.getValue(locator), value);
+    }
+
+    /**
+     * Assert that the value of an element is equal to the given.
+     *
+     * @param locator element location
+     * @param value expected value
+     * @param failMessage message
+     * @since 1.5
+     */
+    public void assertNotValue(String locator, String value, String failMessage) {
+        assertNotEquals(failMessage, selenium.getValue(locator), value);
     }
 
     /**
