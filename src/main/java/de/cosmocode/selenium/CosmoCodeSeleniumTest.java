@@ -24,7 +24,7 @@ import com.thoughtworks.selenium.SeleneseTestCase;
 
 /**
  * Abstract base class for selenium testcases.
- * 
+ *
  * @author Tobias Sarnowski
  */
 public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
@@ -223,6 +223,100 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     }
 
     /**
+     * Asserts that a javascript alert is present.
+     *
+     * @since 1.3
+     */
+    public void assertAlertPresent() {
+        assertTrue(selenium.isAlertPresent());
+    }
+
+    /**
+     * Asserts that no javascript alerts are present.
+     *
+     * @since 1.3
+     */
+    public void assertAlertNotPresent() {
+        assertFalse(selenium.isAlertPresent());
+    }
+
+    /**
+     * Asserts that a javascript prompt is present.
+     *
+     * @since 1.3
+     */
+    public void assertPromptPresent() {
+        assertTrue(selenium.isPromptPresent());
+    }
+
+    /**
+     * Asserts that no javascript prompts are present.
+     *
+     * @since 1.3
+     */
+    public void assertPromptNotPresent() {
+        assertFalse(selenium.isPromptPresent());
+    }
+
+    /**
+     * Asserts that a javascript confirmation is present.
+     *
+     * @since 1.3
+     */
+    public void assertConfirmationPresent() {
+        assertTrue(selenium.isConfirmationPresent());
+    }
+
+    /**
+     * Asserts that no javascript confirmations are present.
+     *
+     * @since 1.3
+     */
+    public void assertConfirmationNotPresent() {
+        assertFalse(selenium.isConfirmationPresent());
+    }
+
+    /**
+     * Asserts that an element is checked.
+     *
+     * @param locator element location
+     * @since 1.3
+     */
+    public void assertChecked(String locator) {
+        assertTrue(selenium.isChecked(locator));
+    }
+
+    /**
+     * Asserts that no element is checked.
+     *
+     * @param locator element location
+     * @since 1.3
+     */
+    public void assertNotChecked(String locator) {
+        assertFalse(selenium.isChecked(locator));
+    }
+
+    /**
+     * Asserts that something is selected.
+     *
+     * @param selectLocator element location
+     * @since 1.3
+     */
+    public void assertSomethingSelected(String selectLocator) {
+        assertTrue(selenium.isSomethingSelected(selectLocator));
+    }
+
+    /**
+     * Asserts that nothing is selected.
+     *
+     * @param selectLocator element location
+     * @since 1.3
+     */
+    public void assertNothingSelected(String selectLocator) {
+        assertFalse(selenium.isSomethingSelected(selectLocator));
+    }
+
+        /**
      * Checks if the given pattern is present in the current browser window.
      *
      * @param pattern search text
@@ -233,6 +327,16 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     }
 
     /**
+     * Asserts that the given pattern is present in the current browser window.
+     *
+     * @param pattern search text
+     * @since 1.3
+     */
+    public void assertTextPresent(String pattern) {
+        assertTrue(selenium.isTextPresent(pattern));
+    }
+
+    /**
      * Checks if the given pattern is not present in the current browser window.
      *
      * @param pattern search text
@@ -240,6 +344,118 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
      */
     public void verifyTextNotPresent(String pattern) {
         verifyFalse(selenium.isTextPresent(pattern));
+    }
+
+    /**
+     * Asserts that the given pattern is not present in the current browser window.
+     *
+     * @param pattern search text
+     * @since 1.3
+     */
+    public void assertTextNotPresent(String pattern) {
+        assertFalse(selenium.isTextPresent(pattern));
+    }
+
+    /**
+     * Asserts that an element is present.
+     *
+     * @param locator element location
+     * @since 1.3
+     */
+    public void assertElementPresent(String locator) {
+        assertTrue(selenium.isElementPresent(locator));
+    }
+
+    /**
+     * Asserts that an element is not present.
+     *
+     * @param locator element location
+     * @since 1.3
+     */
+    public void assertElementNotPresent(String locator) {
+        assertFalse(selenium.isElementPresent(locator));
+    }
+
+    /**
+     * Asserts that an element is visible.
+     *
+     * @param locator element location
+     * @since 1.3
+     */
+    public void assertVisible(String locator) {
+        assertTrue(selenium.isVisible(locator));
+    }
+
+    /**
+     * Asserts that an element is not visible.
+     *
+     * @param locator element location
+     * @since 1.3
+     */
+    public void assertNotVisible(String locator) {
+        assertFalse(selenium.isVisible(locator));
+    }
+
+    /**
+     * Asserts that an element is editable.
+     *
+     * @param locator element location
+     * @since 1.3
+     */
+    public void assertEditable(String locator) {
+        assertTrue(selenium.isEditable(locator));
+    }
+
+    /**
+     * Asserts that an element is not editable.
+     *
+     * @param locator element location
+     * @since 1.3
+     */
+    public void assertNotEditable(String locator) {
+        assertFalse(selenium.isEditable(locator));
+    }
+
+    /**
+     * Asserts that an element is ordered.
+     *
+     * @param locator1 element1 location
+     * @param locator2 element2 location
+     * @since 1.3
+     */
+    public void assertOrdered(String locator1, String locator2) {
+        assertTrue(selenium.isOrdered(locator1, locator2));
+    }
+
+    /**
+     * Asserts that an element is not ordered.
+     *
+     * @param locator1 element1 location
+     * @param locator2 element2 location
+     * @since 1.3
+     */
+    public void assertNotOrdered(String locator1, String locator2) {
+        assertFalse(selenium.isOrdered(locator1, locator2));
+    }
+
+    /**
+     * Asserts that a cookie is present.
+     *
+     * @param name cookie's name
+     * @since 1.3
+     */
+    public void assertCookiePresent(String name) {
+        assertTrue(selenium.isCookiePresent(name));
+    }
+
+    /**
+     * Asserts that a cookie is not present.
+     *
+     * @param name cookie's name
+     * @since 1.3
+     */
+    public void assertCookieNotPresent(String name) {
+        assertFalse(selenium.isCookiePresent(name));
     }
 
 
