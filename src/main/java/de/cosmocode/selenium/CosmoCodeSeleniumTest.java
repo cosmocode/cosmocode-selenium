@@ -223,12 +223,41 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     }
 
     /**
+     * Asserts that an alert with the given message is present.
+     *
+     * @param message message
+     */
+    public void assertAlert(String message) {
+        assertEquals(message, selenium.getAlert());
+    }
+
+    /**
+     * Asserts that an alert with the given message is present.
+     *
+     * @param message message
+     * @param failMessage message
+     */
+    public void assertAlert(String message, String failMessage) {
+        assertEquals(failMessage, message, selenium.getAlert());
+    }
+
+    /**
      * Asserts that a javascript alert is present.
      *
      * @since 1.3
      */
     public void assertAlertPresent() {
         assertTrue(selenium.isAlertPresent());
+    }
+
+    /**
+     * Asserts that a javascript alert is present.
+     *
+     * @param failMessage message
+     * @since 1.4
+     */
+    public void assetAlertPresent(String failMessage) {
+        assertTrue(failMessage, selenium.isAlertPresent());
     }
 
     /**
@@ -241,12 +270,32 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     }
 
     /**
+     * Asserts that no javascript alerts are present.
+     *
+     * @param failMessage message
+     * @since 1.4
+     */
+    public void assertAlertNotPresent(String failMessage) {
+        assertFalse(failMessage, selenium.isAlertPresent());
+    }
+
+    /**
      * Asserts that a javascript prompt is present.
      *
      * @since 1.3
      */
     public void assertPromptPresent() {
         assertTrue(selenium.isPromptPresent());
+    }
+
+    /**
+     * Asserts that a javascript prompt is present.
+     *
+     * @param failMessage message
+     * @since 1.4
+     */
+    public void assertPromptPresent(String failMessage) {
+        assertTrue(failMessage, selenium.isPromptPresent());
     }
 
     /**
@@ -259,6 +308,16 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     }
 
     /**
+     * Asserts that no javascript prompts are present.
+     *
+     * @param failMessage message
+     * @since 1.4
+     */
+    public void assertPromptNotPresent(String failMessage) {
+        assertFalse(failMessage, selenium.isPromptPresent());
+    }
+
+    /**
      * Asserts that a javascript confirmation is present.
      *
      * @since 1.3
@@ -268,12 +327,32 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     }
 
     /**
+     * Asserts that a javascript confirmation is present.
+     *
+     * @param failMessage message
+     * @since 1.4
+     */
+    public void assertConfirmationPresent(String failMessage) {
+        assertTrue(failMessage, selenium.isConfirmationPresent());
+    }
+
+    /**
      * Asserts that no javascript confirmations are present.
      *
      * @since 1.3
      */
     public void assertConfirmationNotPresent() {
         assertFalse(selenium.isConfirmationPresent());
+    }
+
+    /**
+     * Asserts that no javascript confirmations are present.
+     *
+     * @param failMessage message
+     * @since 1.4
+     */
+    public void assertConfirmationNotPresent(String failMessage) {
+        assertFalse(failMessage, selenium.isConfirmationPresent());
     }
 
     /**
@@ -287,6 +366,17 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     }
 
     /**
+     * Asserts that an element is checked.
+     *
+     * @param failMessage message
+     * @param locator element location
+     * @since 1.4
+     */
+    public void assertChecked(String locator, String failMessage) {
+        assertTrue(failMessage, selenium.isChecked(locator));
+    }
+
+    /**
      * Asserts that no element is checked.
      *
      * @param locator element location
@@ -294,6 +384,17 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
      */
     public void assertNotChecked(String locator) {
         assertFalse(selenium.isChecked(locator));
+    }
+
+    /**
+     * Asserts that no element is checked.
+     *
+     * @param locator element location
+     * @param failMessage message
+     * @since 1.4
+     */
+    public void assertNotChecked(String locator, String failMessage) {
+        assertFalse(failMessage, selenium.isChecked(locator));
     }
 
     /**
@@ -307,6 +408,17 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     }
 
     /**
+     * Asserts that something is selected.
+     *
+     * @param selectLocator element location
+     * @param failMessage message
+     * @since 1.4
+     */
+    public void assertSomethingSelected(String selectLocator, String failMessage) {
+        assertTrue(failMessage, selenium.isSomethingSelected(selectLocator));
+    }
+
+    /**
      * Asserts that nothing is selected.
      *
      * @param selectLocator element location
@@ -316,7 +428,18 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
         assertFalse(selenium.isSomethingSelected(selectLocator));
     }
 
-        /**
+    /**
+     * Asserts that nothing is selected.
+     *
+     * @param selectLocator element location
+     * @param failMessage message
+     * @since 1.4
+     */
+    public void assertNothingSelected(String selectLocator, String failMessage) {
+        assertFalse(failMessage, selenium.isSomethingSelected(selectLocator));
+    }
+
+    /**
      * Checks if the given pattern is present in the current browser window.
      *
      * @param pattern search text
@@ -334,6 +457,17 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
      */
     public void assertTextPresent(String pattern) {
         assertTrue(selenium.isTextPresent(pattern));
+    }
+
+    /**
+     * Asserts that the given pattern is present in the current browser window.
+     *
+     * @param pattern search text
+     * @param failMessage message
+     * @since 1.4
+     */
+    public void assertTextPresent(String pattern, String failMessage) {
+        assertTrue(failMessage, selenium.isTextPresent(pattern));
     }
 
     /**
@@ -357,6 +491,17 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     }
 
     /**
+     * Asserts that the given pattern is not present in the current browser window.
+     *
+     * @param pattern search text
+     * @param failMessage message
+     * @since 1.4
+     */
+    public void assertTextNotPresent(String pattern, String failMessage) {
+        assertFalse(failMessage, selenium.isTextPresent(pattern));
+    }
+
+    /**
      * Asserts that an element is present.
      *
      * @param locator element location
@@ -364,6 +509,17 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
      */
     public void assertElementPresent(String locator) {
         assertTrue(selenium.isElementPresent(locator));
+    }
+
+    /**
+     * Asserts that an element is present.
+     *
+     * @param locator element location
+     * @param failMessage message
+     * @since 1.4
+     */
+    public void assertElementPresent(String locator, String failMessage) {
+        assertTrue(failMessage, selenium.isElementPresent(locator));
     }
 
     /**
@@ -377,6 +533,17 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     }
 
     /**
+     * Asserts that an element is not present.
+     *
+     * @param locator element location
+     * @param failMessage message
+     * @since 1.4
+     */
+    public void assertElementNotPresent(String locator, String failMessage) {
+        assertFalse(failMessage, selenium.isElementPresent(locator));
+    }
+
+    /**
      * Asserts that an element is visible.
      *
      * @param locator element location
@@ -384,6 +551,17 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
      */
     public void assertVisible(String locator) {
         assertTrue(selenium.isVisible(locator));
+    }
+
+    /**
+     * Asserts that an element is visible.
+     *
+     * @param locator element location
+     * @param failMessage message
+     * @since 1.4
+     */
+    public void assertVisible(String locator, String failMessage) {
+        assertTrue(failMessage, selenium.isVisible(locator));
     }
 
     /**
@@ -397,6 +575,17 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     }
 
     /**
+     * Asserts that an element is not visible.
+     *
+     * @param locator element location
+     * @param failMessage message
+     * @since 1.4
+     */
+    public void assertNotVisible(String locator, String failMessage) {
+        assertFalse(failMessage, selenium.isVisible(locator));
+    }
+
+    /**
      * Asserts that an element is editable.
      *
      * @param locator element location
@@ -407,6 +596,17 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     }
 
     /**
+     * Asserts that an element is editable.
+     *
+     * @param locator element location
+     * @param failMessage message
+     * @since 1.4
+     */
+    public void assertEditable(String locator, String failMessage) {
+        assertTrue(failMessage, selenium.isEditable(locator));
+    }
+
+    /**
      * Asserts that an element is not editable.
      *
      * @param locator element location
@@ -414,6 +614,17 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
      */
     public void assertNotEditable(String locator) {
         assertFalse(selenium.isEditable(locator));
+    }
+
+    /**
+     * Asserts that an element is not editable.
+     *
+     * @param locator element location
+     * @param failMessage message
+     * @since 1.4
+     */
+    public void assertNotEditable(String locator, String failMessage) {
+        assertFalse(failMessage, selenium.isEditable(locator));
     }
 
     /**
@@ -428,6 +639,18 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     }
 
     /**
+     * Asserts that an element is ordered.
+     *
+     * @param locator1 element1 location
+     * @param locator2 element2 location
+     * @param failMessage message
+     * @since 1.4
+     */
+    public void assertOrdered(String locator1, String locator2, String failMessage) {
+        assertTrue(failMessage, selenium.isOrdered(locator1, locator2));
+    }
+
+    /**
      * Asserts that an element is not ordered.
      *
      * @param locator1 element1 location
@@ -436,6 +659,18 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
      */
     public void assertNotOrdered(String locator1, String locator2) {
         assertFalse(selenium.isOrdered(locator1, locator2));
+    }
+
+    /**
+     * Asserts that an element is not ordered.
+     *
+     * @param locator1 element1 location
+     * @param locator2 element2 location
+     * @param failMessage message
+     * @since 1.4
+     */
+    public void assertNotOrdered(String locator1, String locator2, String failMessage) {
+        assertFalse(failMessage, selenium.isOrdered(locator1, locator2));
     }
 
     /**
@@ -449,6 +684,17 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     }
 
     /**
+     * Asserts that a cookie is present.
+     *
+     * @param name cookie's name
+     * @param failMessage message
+     * @since 1.4
+     */
+    public void assertCookiePresent(String name, String failMessage) {
+        assertTrue(failMessage, selenium.isCookiePresent(name));
+    }
+
+    /**
      * Asserts that a cookie is not present.
      *
      * @param name cookie's name
@@ -456,6 +702,17 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
      */
     public void assertCookieNotPresent(String name) {
         assertFalse(selenium.isCookiePresent(name));
+    }
+
+    /**
+     * Asserts that a cookie is not present.
+     *
+     * @param name cookie's name
+     * @param failMessage message
+     * @since 1.4
+     */
+    public void assertCookieNotPresent(String name, String failMessage) {
+        assertFalse(failMessage, selenium.isCookiePresent(name));
     }
 
 
