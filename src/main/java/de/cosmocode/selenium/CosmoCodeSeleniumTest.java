@@ -166,7 +166,7 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     }
 
     /**
-     * Assets that to values are not equal
+     * Assets that to values are not equal.
      *
      * @param failMessage message
      * @param obj1 object
