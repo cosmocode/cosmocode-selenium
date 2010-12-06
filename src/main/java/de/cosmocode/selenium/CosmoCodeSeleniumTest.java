@@ -166,7 +166,7 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     }
 
     /**
-     * Assets that to values are not equal.
+     * Asserts that two values are not equal.
      *
      * @param failMessage message
      * @param obj1 object
@@ -192,6 +192,31 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
      */
     public void waitForPageToLoad(int timeoutInMs) {
         selenium.waitForPageToLoad(Integer.toString(timeoutInMs));
+    }
+
+    /**
+     * Wait for the value in an input field to change, for example by some AJAX request.
+     * Requires the old value to check for.
+     * 
+     * @param locator the locator for the input field
+     * @param oldValue the old value in the input field, 
+     */
+    public void waitForValueChange(final String locator, final String oldValue) {
+        for (int second = 0;; second++) {
+            if (second >= 60) fail("timeout");
+            try {
+                final String newValue = getValue(locator);
+                if (oldValue == null && newValue == null) {
+                    Thread.sleep(1000);
+                } else if (oldValue != null && oldValue.equals(newValue)) {
+                    Thread.sleep(1000);
+                } else {
+                    break;
+                }
+            /* CHECKSTYLE:OFF */
+            } catch (Exception e) {}
+            /* CHECKSTYLE:ON */
+        }
     }
 
     /**
