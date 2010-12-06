@@ -197,13 +197,27 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     /**
      * Wait for the value in an input field to change, for example by some AJAX request.
      * Requires the old value to check for.
+     * This method fails with message "timeout" if the field did not change after 60 seconds.
      * 
      * @param locator the locator for the input field
-     * @param oldValue the old value in the input field, 
+     * @param oldValue the old value in the input field
      */
     public void waitForValueChange(final String locator, final String oldValue) {
+        waitForValueChange(locator, oldValue, 60);
+    }
+    
+    /**
+     * Wait for the value in an input field to change, for example by some AJAX request.
+     * Requires the old value to check for.
+     * This method fails with message "timeout" after the given number of seconds have passed.
+     * 
+     * @param locator the locator for the input field
+     * @param oldValue the old value in the input field
+     * @param timeout the number of seconds to wait for value change until the method fails
+     */
+    public void waitForValueChange(final String locator, final String oldValue, final int timeout) {
         for (int second = 0;; second++) {
-            if (second >= 60) fail("timeout");
+            if (second >= timeout) fail("timeout");
             try {
                 final String newValue = getValue(locator);
                 if (oldValue == null && newValue == null) {
