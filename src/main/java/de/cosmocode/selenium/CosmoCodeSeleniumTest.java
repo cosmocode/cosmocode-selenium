@@ -197,7 +197,7 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     /**
      * Wait for the value in an input field to change, for example by some AJAX request.
      * Requires the old value to check for.
-     * This method fails with message "timeout" if the field did not change after 60 seconds.
+     * This method fails with the message "timeout" if the field did not change after 60 seconds.
      * 
      * @param locator the locator for the input field
      * @param oldValue the old value in the input field
@@ -209,7 +209,7 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     /**
      * Wait for the value in an input field to change, for example by some AJAX request.
      * Requires the old value to check for.
-     * This method fails with message "timeout" after the given number of seconds have passed.
+     * This method fails with the message "timeout" after the given number of seconds have passed.
      * 
      * @param locator the locator for the input field
      * @param oldValue the old value in the input field
@@ -227,9 +227,42 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
                 } else {
                     break;
                 }
-            /* CHECKSTYLE:OFF */
-            } catch (Exception e) {}
-            /* CHECKSTYLE:ON */
+            } catch (InterruptedException e) {
+                fail("Sleep was interrupted");
+            }
+        }
+    }
+
+    /**
+     * Wait until an element with the given locator is present, for example after an AJAX request.
+     * This method fails with the message "timeout" if the element did not appear after 60 seconds.
+     *
+     * @param locator the locator of the element that we wait for
+     * @since 1.6
+     */
+    public void waitForElementPresent(final String locator) {
+        waitForElementPresent(locator, 60);
+    }
+
+    /**
+     * Wait until an element with the given locator is present, for example after an AJAX request.
+     * This method fails with the message "timeout" after the given number of seconds have passed.
+     *
+     * @param locator the locator of the element that we wait for
+     * @param timeout the number of seconds to wait for the element until the method fails
+     * @since 1.6
+     */
+    public void waitForElementPresent(final String locator, final int timeout) {
+        for (int second = 0;; second++) {
+            if (second >= timeout) fail("timeout");
+            if (selenium.isElementPresent(locator)) {
+                break;
+            }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                fail("Sleep was interrupted");
+            }
         }
     }
 
