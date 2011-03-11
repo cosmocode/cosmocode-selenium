@@ -308,6 +308,17 @@ public abstract class CosmoCodeSeleniumTest extends SeleneseTestCase {
     }
 
     /**
+     * Clicks a link and waits until the new page has loaded.
+     *
+     * @param locator the link identifier
+     * @since 1.6
+     */
+    public void clickAndWait(String locator) {
+        selenium.click(locator);
+        waitForPageToLoad();
+    }
+
+    /**
      * Assert that the value of an element is equal to the given.
      *
      * @param locator element location
